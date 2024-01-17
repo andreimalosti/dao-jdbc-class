@@ -15,8 +15,8 @@ public class Program {
 		SellerDao sellerDao = DaoFactory.createSellerDao();
 		
 		System.out.println("=== TEST 1: seller findById ===");
-		Seller Seller = sellerDao.findById(3);
-		System.out.println(Seller);
+		Seller seller = sellerDao.findById(3);
+		System.out.println(seller);
 		
 		System.out.println("=== TEST 2: seller findByDepartment ===");
 		Department department = new Department(2, null);
@@ -35,6 +35,13 @@ public class Program {
 		Seller newSeller = new Seller(null, "Greg", "greg@gmail.com", new Date(), 4000.0, department);
 		sellerDao.insert(newSeller);
 		System.out.println("Inserted New id = " + newSeller.getId());
+		
+		System.out.println("=== TEST 5: seller update ===");
+		seller = sellerDao.findById(1);
+		seller.setName("Martha Waine");
+		seller.setBaseSalary(4000.0);
+		sellerDao.update(seller);
+		System.out.println("Seller update complete");
 	}
 
 }
